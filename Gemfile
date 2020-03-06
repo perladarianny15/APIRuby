@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'devise', '~> 4.7', '>= 4.7.1'
