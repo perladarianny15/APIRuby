@@ -19,4 +19,46 @@
       <div class="mx-auto mt-5" style="width: 400px">
     </div>
   </div>
+  <div class="row">
+      <div class="col-lg-12 mt-5">
+          <div class="mx-auto mt5" style="width: 900px">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Name </th>
+                  <th>Capital</th>
+                  <th>Region</th>
+                  <th>Subregion</th>
+                  <th>Population</th>
+                  <th>Demonyn</th>
+
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                    <th>Name </th>
+                    <th>Capital</th>
+                    <th>Region</th>
+                    <th>Subregion</th>
+                    <th>Population</th>
+                    <th>Demonyn</th>
+                </tr>
+              </tfoot>
+              <tbody>
+              <% @countrylist.each do |countrylist| %>
+                <tr>
+                  <td><%= countrylist['name']%></td>
+                  <td><%= countrylist['capital']%></td>
+                  <td><%= countrylist['region']%></td>
+                  <td><%= countrylist['subregion']%></td>
+                  <td><%= countrylist['population']%></td>
+                  <td><%= countrylist['demonym']%></td>
+
+                </tr>
+              <% end %>
+            </tbody>
+            </table>
+          </div>
+      </div>
+  </div>
 </div>
