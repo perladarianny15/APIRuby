@@ -25,6 +25,9 @@ gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'devise', '~> 4.7', '>= 4.7.1'
+
+gem 'excon', '~> 0.9.0'
+gem 'httparty', '~> 0.13.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
