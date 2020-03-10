@@ -1,0 +1,21 @@
+<h1>Airline Info!</h1>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-6">
+      <h4>Airline info</h4>
+      <dl>
+      <% @Airline.each do |airline| %>
+        <dt>Type</dt>
+        <dd><%= airline['type'] %></dd>
+        <dt>IATA Code</dt>
+        <dd><%= airline['iataCode'] %></dd>
+        <dt>Bussiness Name</dt>
+        <dd><%= airline['businessName'] %></dd>
+        <dt>Common Name</dt>
+        <dd><%= airline['commonName'] %></dd>
+      <%end%>
+      </dl>
+    </div>
+  </div>
+</div>

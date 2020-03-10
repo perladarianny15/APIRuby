@@ -1,6 +1,6 @@
 
-module DeviseBootstrapViewsHelper
-    def bootstrap_devise_error_messages!
+module DeviseHelper
+    def set_flash_message!
       return '' if resource.errors.empty?
   
       messages = resource.errors.full_messages.map { |message| content_tag(:li, message) }.join
@@ -11,3 +11,4 @@ module DeviseBootstrapViewsHelper
       )
     end
   end
+  

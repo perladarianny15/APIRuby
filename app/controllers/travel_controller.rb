@@ -14,20 +14,6 @@ class TravelController < ApplicationController
     @weather = find_weather(@country['capital'], @country['alpha2Code'])
   end
 
-  def request_api(url)
-    response = HTTParty.get('https://restcountries-v1.p.rapidapi.com')
-      response = Excon.get(
-        url,
-        headers: {
-          "x-rapidapi-host": "restcountries-v1.p.rapidapi.com",
-          "x-rapidapi-key": "689d05b9ffmsh39e85091c337c51p1f12bfjsn31d59f45061c"
-        }
-      )
-
-    return nil if response.status != 200
-
-    JSON.parse(response.body)
-  end
   def find_all()
     request_api(
       "https://restcountries-v1.p.rapidapi.com/all"
@@ -45,4 +31,18 @@ class TravelController < ApplicationController
       "https://community-open-weather-map.p.rapidapi.com/forecast?q=#{query}"
     )
   end
+  def request_api(url)
+    response = HTTParty.get('https://restcountries-v1.p.rapidapi.com')
+      response = Excon.get(
+        url,
+        headers: {
+          "x-rapidapi-host": "restcountries-v1.p.rapidapi.com",
+          "x-rapidapi-key": "689d05b9ffmsh39e85091c337c51p1f12bfjsn31d59f45061c"
+        }
+      )
+
+    return nil if response.status != 200
+
+    JSON.parse(response.body)
+  end  
 end

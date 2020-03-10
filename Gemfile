@@ -28,6 +28,8 @@ gem 'devise', '~> 4.7', '>= 4.7.1'
 
 gem 'excon', '~> 0.9.0'
 gem 'httparty', '~> 0.13.7'
+
+gem 'amadeus' 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
