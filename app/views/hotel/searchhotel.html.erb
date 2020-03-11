@@ -1,21 +1,42 @@
-<h1>Airline Info!</h1>
-
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-lg-6">
-      <h4>Airline info</h4>
-      <dl>
-      <% @Airline.each do |airline| %>
-        <dt>Type</dt>
-        <dd><%= airline['type'] %></dd>
-        <dt>IATA Code</dt>
-        <dd><%= airline['iataCode'] %></dd>
-        <dt>Bussiness Name</dt>
-        <dd><%= airline['businessName'] %></dd>
-        <dt>Common Name</dt>
-        <dd><%= airline['commonName'] %></dd>
-      <%end%>
-      </dl>
+    <div class="row">
+        <div class="col-lg-12 mt-5">
+            <div class="mx-auto mt5" style="width: 900px">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>City Code</th>
+                    <th>Name</th>
+                    <th>Hotel Rating</th>
+                    <th>Chain Code</th>
+                    <th>Address</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Type</th>
+                    <th>City Code</th>
+                    <th>Name</th>
+                    <th>Hotel Rating</th>
+                    <th>Chain Code</th>
+                    <th>Address</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <% @hotelList.each do |hotel| %>
+                <tr>
+                    <td><%= hotel['hotel']['type']%></td>
+                    <td><%= hotel['hotel']['cityCode']%></td>
+                    <td><%= hotel['hotel']['name']%></td>
+                    <td><%= hotel['hotel']['chainCode']%></td>
+                    <td><%= hotel['hotel']['rating']%></td>
+                    <td><%= hotel['hotel']['address']['lines']%></td>
+                </tr>
+                <% end %>
+            </tbody>
+            </table>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
