@@ -30,6 +30,8 @@ gem 'excon', '~> 0.9.0'
 gem 'httparty', '~> 0.13.7'
 
 gem 'amadeus' 
+gem 'font-awesome-sass', '~> 5.12.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

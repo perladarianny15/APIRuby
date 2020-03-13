@@ -1,0 +1,62 @@
+<head>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'flightinfo', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<%= render 'flight/navigation' %>
+
+<div class="container">
+    <% @flightSegments['data'].each do |flight| %>
+        </br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card text-center">
+                    <div class="card-header">
+                    <h3>Flight Low Fare</h3>
+                </div>
+                <div class="card-body">
+                    <div class="same-line">
+                        <div class="on-lineclass">
+                            <em>Class:</em>
+                            <p><%= flight['offerItems'][0]['services'][0]['segments'][0]['pricingDetailPerAdult']['travelClass']%></p>
+                        </div>
+                    </div>
+
+                    </br>
+                    </br>
+
+                    <div class="same-line">
+                    <div class="on-the-left">
+                        <h3><%= flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['departure']['iataCode']%></h3>
+                        <i class="fas fa-plane-departure"></i>
+                   </div>
+                   <div style="margin: 5px -120px 40px -220px;">
+                       <i class="far fa-clock"></i>
+                       <%= DateTime.parse(flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['departure']['at']).strftime("%I:%M%p")%>
+                   </div>
+                    <div class="on-the-center">  
+                        <%= DateTime.parse(flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['departure']['at']).strftime("%Y-%m-%d")%>
+
+                       <i class="fas fa-arrow-right" ></i>
+                       <%= DateTime.parse(flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['departure']['at']).strftime("%Y-%m-%d")%>
+
+                    </div>
+                    <div class="on-the-right">   
+                       <h3><%= flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['arrival']['iataCode']%></h3>
+                       <i class="fas fa-plane-arrival"></i>
+                    </div>
+                    <div style="margin: 5px 180px 40px 140px;">
+                        <i class="far fa-clock"></i>
+                        <%= DateTime.parse(flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['arrival']['at']).strftime("%I:%M%p")%>
+                    </div>
+                   </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <p>Price <i class="fas fa-dollar-sign"></i> </p>
+                    <h4><%= flight['offerItems'][0]['pricePerAdult']['total']%></h4>
+                </div>
+                </div>
+            </div>
+        </div>
+    <%end%>
+</div>

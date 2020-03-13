@@ -1,0 +1,37 @@
+.same-line {
+    height: 10px; /*childrens it's all absolute position, so must set height*/
+    position: relative;
+}
+.same-line div{
+    display: inline-block;
+    position: absolute;
+}
+.on-the-left{
+ left:0px;
+}
+.on-the-center{
+    left: 0%;
+    right: 0%;
+    text-align: center;
+    margin-bottom: 30%;
+    margin-top: -50px;
+
+}
+.on-the-right{
+   right: 0px;
+}
+.on-lineclass {
+    height: 10px;
+    margin-bottom: 30%;
+    margin-top: -20px;
+    left: 90%;
+    right: -40px;
+    position: relative;
+}
+
+.card-header{
+    background-color: #FFDD00;
+}
+h3{
+    font-family: "Lucida Console";
+}

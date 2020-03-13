@@ -1,129 +1,100 @@
+<head>
+
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <%= stylesheet_link_tag 'animate', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Icomoon Icon Fonts-->
+    <%= stylesheet_link_tag 'icomoon', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Bootstrap  -->
+    <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Magnific Popup -->
+    <%= stylesheet_link_tag 'magnific-popup', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Flexslider  -->
+    <%= stylesheet_link_tag 'flexslider', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Owl Carousel -->
+    <%= stylesheet_link_tag 'owl.carousel.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'owl.theme.default.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <!-- Date Picker -->
+    <%= stylesheet_link_tag 'bootstrap-datepicker', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Flaticons  -->
+    <%= stylesheet_link_tag 'flaticon', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Theme style  -->
+    <%= stylesheet_link_tag 'style', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Modernizr JS -->
+    <%= javascript_include_tag "respond.min" %>
+	<%= javascript_include_tag "modernizr-2.6.2.min" %>
+</head>
+
 <div class="colorlib-loader"></div>
 
 	<div id="page">
-        <%= render 'layouts/navigation' %>
+        <%= render 'home/navigation' %>
+        <%= render 'home/carousel' %>
 
-		<aside id="colorlib-hero">
-			<div class="flexslider">
-				<ul class="slides">
-			   	<li style="background-image: url(/assets/img_bg_1.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h2>2 Days Tour</h2>
-				   					<h1>Amazing Maldives Tour</h1>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style="background-image: url(/assets/img_bg_2.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h2>10 Days Cruises</h2>
-				   					<h1>From Greece to Spain</h1>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style="background-image: url(/assets/img_bg_5.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluids">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h2>Explore our most tavel agency</h2>
-				   					<h1>Our Travel Agency</h1>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style="background-image: url(/assets/img_bg_4.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h2>Experience the</h2>
-				   					<h1>Best Trip Ever</h1>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>	   	
-			  	</ul>
-		  	</div>
-		</aside>
 		<div id="colorlib-reservation">
 			<!-- <div class="container"> -->
 				<div class="row">
 					<div class="search-wrap">
 						<div class="container">
 							<ul class="nav nav-tabs">
-								<li class="active"><a data-toggle="tab" href="#flight"><i class="flaticon-plane"></i> Flight</a></li>
+								<li class="active"><a data-toggle="tab" href="#flight"><i class="flaticon-plane"></i> Flight Low Fare</a></li>
 								<li><a data-toggle="tab" href="#hotel"><i class="flaticon-resort"></i> Hotel</a></li>
 								<li><a data-toggle="tab" href="#car"><i class="flaticon-car"></i> Car Rent</a></li>
 								<li><a data-toggle="tab" href="#cruises"><i class="flaticon-boat"></i> Cruises</a></li>
 							</ul>
 						</div>
 						<div class="tab-content">
-							<div id="flight" class="tab-pane fade in active">
-								<form method="post" class="colorlib-form">
-				              	<div class="row">
-				              	 <div class="col-md-3">
-				              	 	<div class="form-group">
-				                    <label for="date">Where:</label>
-				                    <div class="form-field">
-				                      <input type="text" id="location" class="form-control" placeholder="Search Location">
-				                    </div>
-				                  </div>
-				              	 </div>
-				                <div class="col-md-2">
-				                  <div class="form-group">
-				                    <label for="date">Check-in:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-2">
-				                  <div class="form-group">
-				                    <label for="date">Check-out:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="guests">Guest</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-arrow-down3"></i>
-				                      <select name="people" id="people" class="form-control">
-				                        <option value="#">1</option>
-				                        <option value="#">2</option>
-				                        <option value="#">3</option>
-				                        <option value="#">4</option>
-				                        <option value="#">5+</option>
-				                      </select>
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-2">
-				                  <input type="submit" name="submit" id="submit" value="Find Flights" class="btn btn-primary btn-block">
-				                </div>
-				              </div>
-				            </form>
-				         </div>
+								<div id="flight" class="tab-pane fade in active">
+									<%= form_with(url: flight_lowfare_path, method: 'get', local: true, class:"colorlib-form") do %>
+
+									<div class="row">
+									<div class="col-md-3">
+										<div class="form-group">
+										<label for="date">Origin:</label>
+										<div class="form-field">
+										<%= text_field_tag :origin, nil, placeholder: 'Origin', id:"location", class: 'form-control' %>
+										</div>
+									</div>
+									</div>
+									<div class="col-md-2">
+									<div class="form-group">
+										<label for="date">Destination:</label>
+										<div class="form-field">
+										<%= text_field_tag :destination, nil, placeholder: 'Destination', id:"location", class: 'form-control' %>
+										</div>
+									</div>
+									</div>
+									<div class="col-md-2">
+									<div class="form-group">
+										<label for="date">Check-in:</label>
+										<div class="form-field">
+										<i class="icon icon-calendar2"></i>
+										<%= text_field_tag :departureDate, nil, placeholder: 'Departure Date', id:"date", class: 'form-control date' %>
+										</div>
+									</div>
+									</div>
+									<div class="col-md-2">
+										<%= button_tag 'Find Flights', class: 'btn btn-primary btn-block', id:"submit" %>
+									</div>
+								</div>
+							</div>
+						 <%end%>
 				         <div id="hotel" class="tab-pane fade">
 						      <form method="post" class="colorlib-form">
 				              	<div class="row">
@@ -791,78 +762,7 @@
 				</div>
 			</div>
 		</div>
-
-		<footer id="colorlib-footer" role="contentinfo">
-			<div class="container">
-				<div class="row row-pb-md">
-					<div class="col-md-3 colorlib-widget">
-						<h4>Tour Agency</h4>
-						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-						<p>
-							<ul class="colorlib-social-icons">
-								<li><a href="#"><i class="icon-twitter"></i></a></li>
-								<li><a href="#"><i class="icon-facebook"></i></a></li>
-								<li><a href="#"><i class="icon-linkedin"></i></a></li>
-								<li><a href="#"><i class="icon-dribbble"></i></a></li>
-							</ul>
-						</p>
-					</div>
-					<div class="col-md-2 colorlib-widget">
-						<h4>Book Now</h4>
-						<p>
-							<ul class="colorlib-footer-links">
-								<li><a href="#">Flight</a></li>
-								<li><a href="#">Hotels</a></li>
-								<li><a href="#">Tour</a></li>
-								<li><a href="#">Car Rent</a></li>
-								<li><a href="#">Beach &amp; Resorts</a></li>
-								<li><a href="#">Cruises</a></li>
-							</ul>
-						</p>
-					</div>
-					<div class="col-md-2 colorlib-widget">
-						<h4>Top Deals</h4>
-						<p>
-							<ul class="colorlib-footer-links">
-								<li><a href="#">Edina Hotel</a></li>
-								<li><a href="#">Quality Suites</a></li>
-								<li><a href="#">The Hotel Zephyr</a></li>
-								<li><a href="#">Da Vinci Villa</a></li>
-								<li><a href="#">Hotel Epikk</a></li>
-							</ul>
-						</p>
-					</div>
-					<div class="col-md-2">
-						<h4>Blog Post</h4>
-						<ul class="colorlib-footer-links">
-							<li><a href="#">The Ultimate Packing List For Female Travelers</a></li>
-							<li><a href="#">How These 5 People Found The Path to Their Dream Trip</a></li>
-							<li><a href="#">A Definitive Guide to the Best Dining and Drinking Venues in the City</a></li>
-						</ul>
-					</div>
-
-					<div class="col-md-3 col-md-push-1">
-						<h4>Contact Information</h4>
-						<ul class="colorlib-footer-links">
-							<li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
-							<li><a href="tel://1234567920">+ 1235 2355 98</a></li>
-							<li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
-							<li><a href="#">yoursite.com</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<p>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart2" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span> 
-							<span class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a> , <a href="http://pexels.com/" target="_blank">Pexels.com</a></span>
-						</p>
-					</div>
-				</div>
-			</div>
-		</footer>
+        <%= render 'home/footer' %>
 	</div>
 
 	<div class="gototop js-top">

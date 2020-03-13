@@ -1,8 +1,10 @@
 require 'amadeus'
+require "json"
 
 class FlightController < ApplicationController
   def index
   end
+
   def airline_info
     if(params[:airlinecode].blank?)
       flash[:alert] = 'Could not get Airline Info'
@@ -32,6 +34,23 @@ class FlightController < ApplicationController
     end
 
     @FlightInsp = flight_inspiration
+  end
+
+  def flight_lowfare
+
+      flight_lowfare = find_flight_lowfare(params[:origin], params[:destination], params[:departuredate])
+
+      unless flight_lowfare
+        flash[:alert] = 'Could not get Flight Low fare Info'
+        return render action: :index
+      end
+      @flightSegments = flight_lowfare
+    end
+
+  def find_flight_lowfare(origin, destination, departuredate)
+    amadeus = flight_conexion()
+    response = amadeus.shopping.flight_offers.get(origin: 'NYC', destination: 'MAD', departureDate: '2020-08-01')
+    response.result
   end
 
   def find_flight_inspiration_bycode(citycode)
