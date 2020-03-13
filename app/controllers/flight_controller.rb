@@ -38,7 +38,7 @@ class FlightController < ApplicationController
 
   def flight_lowfare
 
-      flight_lowfare = find_flight_lowfare(params[:origin], params[:destination], params[:departuredate])
+      flight_lowfare = find_flight_lowfare(params[:origin], params[:destination], params[:departuredate], params[:arrivaldate])
 
       unless flight_lowfare
         flash[:alert] = 'Could not get Flight Low fare Info'
@@ -47,9 +47,9 @@ class FlightController < ApplicationController
       @flightSegments = flight_lowfare
     end
 
-  def find_flight_lowfare(origin, destination, departuredate)
+  def find_flight_lowfare(origin, destination, departuredate, arrivaldate)
     amadeus = flight_conexion()
-    response = amadeus.shopping.flight_offers.get(origin: 'NYC', destination: 'MAD', departureDate: '2020-08-01')
+    response = amadeus.shopping.flight_offers.get(origin: (URI.encode(origin)), destination: (URI.encode(destination)), departureDate: (URI.encode(departuredate)), returnDate: (URI.encode(departuredate)))
     response.result
   end
 

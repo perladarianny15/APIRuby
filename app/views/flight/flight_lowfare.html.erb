@@ -1,62 +1,305 @@
 <head>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'flightinfo', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Bootstrap  -->
+    <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Theme style  -->
+    <%= stylesheet_link_tag 'style', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<%= render 'flight/navigation' %>
+<body>
+    <div id="page">
+        <%= render 'flight/navigation' %>
 
-<div class="container">
-    <% @flightSegments['data'].each do |flight| %>
-        </br>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card text-center">
-                    <div class="card-header">
-                    <h3>Flight Low Fare</h3>
-                </div>
-                <div class="card-body">
-                    <div class="same-line">
-                        <div class="on-lineclass">
-                            <em>Class:</em>
-                            <p><%= flight['offerItems'][0]['services'][0]['segments'][0]['pricingDetailPerAdult']['travelClass']%></p>
-                        </div>
-                    </div>
+		<div class="colorlib-wrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+                            <div class="wrap-division">
+                                <div class="col-md-18 col-sm-18 animate-box">
 
-                    </br>
-                    </br>
+                                    <% @flightSegments['data'].each do |flight| %>
+                                        </br>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card text-center">
+                                                    <div class="card-header">
+                                                    <h3>Flight Low Fare</h3>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="same-line">
+                                                        <div class="on-lineclass">
+                                                            <em>Class:</em>
+                                                            <p><%= flight['offerItems'][0]['services'][0]['segments'][0]['pricingDetailPerAdult']['travelClass']%></p>
+                                                        </div>
+                                                    </div>
+                            
+                                                    </br>
+                                                    </br>
+                            
+                                                    <div class="same-line">
+                                                    <div class="on-the-left">
+                                                        <h3><%= flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['departure']['iataCode']%></h3>
+                                                        <i class="fas fa-plane-departure"></i>
+                                                </div>
+                                                <div style="margin: 2px -120px 40px -220px;">
+                                                    <i class="far fa-clock"></i>
+                                                    <%= DateTime.parse(flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['departure']['at']).strftime("%I:%M%p")%>
+                                                </div>
+                                                    <div class="on-the-center">  
+                                                        <%= DateTime.parse(flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['departure']['at']).strftime("%Y-%m-%d")%>
+                            
+                                                    <i class="fas fa-arrow-right" ></i>
+                                                    <%= DateTime.parse(flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['arrival']['at']).strftime("%Y-%m-%d")%>
+                            
+                                                    </div>
+                                                    <div class="on-the-right">   
+                                                    <h3><%= flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['arrival']['iataCode']%></h3>
+                                                    <i class="fas fa-plane-arrival"></i>
+                                                    </div>
+                                                    <div style="margin: 2px 170px 40px 135px;">
+                                                        <i class="far fa-clock"></i>
+                                                        <%= DateTime.parse(flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['arrival']['at']).strftime("%I:%M%p")%>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="card-footer text-muted">
+                                                    <p>Price <i class="fas fa-dollar-sign"></i> </p>
+                                                    <h4><%= flight['offerItems'][0]['pricePerAdult']['total']%></h4>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    <%end%>
+                                </div>
+                            </div>
+                            <div class="row">
+							<div class="col-md-12 text-center">
+								<ul class="pagination">
+									<li class="disabled"><a href="#">&laquo;</a></li>
+									<li class="active"><a href="#">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">&raquo;</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
 
-                    <div class="same-line">
-                    <div class="on-the-left">
-                        <h3><%= flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['departure']['iataCode']%></h3>
-                        <i class="fas fa-plane-departure"></i>
-                   </div>
-                   <div style="margin: 5px -120px 40px -220px;">
-                       <i class="far fa-clock"></i>
-                       <%= DateTime.parse(flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['departure']['at']).strftime("%I:%M%p")%>
-                   </div>
-                    <div class="on-the-center">  
-                        <%= DateTime.parse(flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['departure']['at']).strftime("%Y-%m-%d")%>
-
-                       <i class="fas fa-arrow-right" ></i>
-                       <%= DateTime.parse(flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['departure']['at']).strftime("%Y-%m-%d")%>
-
-                    </div>
-                    <div class="on-the-right">   
-                       <h3><%= flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['arrival']['iataCode']%></h3>
-                       <i class="fas fa-plane-arrival"></i>
-                    </div>
-                    <div style="margin: 5px 180px 40px 140px;">
-                        <i class="far fa-clock"></i>
-                        <%= DateTime.parse(flight['offerItems'][0]['services'][0]['segments'][0]['flightSegment']['arrival']['at']).strftime("%I:%M%p")%>
-                    </div>
-                   </div>
-                </div>
-                <div class="card-footer text-muted">
-                    <p>Price <i class="fas fa-dollar-sign"></i> </p>
-                    <h4><%= flight['offerItems'][0]['pricePerAdult']['total']%></h4>
-                </div>
-                </div>
-            </div>
+					<!-- SIDEBAR-->
+					<div class="col-md-2">
+						<div class="sidebar-wrap">
+							
+							<div class="side animate-box">
+								<div class="row">
+									<div class="col-md-10">
+										<h3 class="sidebar-heading">Price Range</h3>
+										<form method="post" class="colorlib-form-2">
+						              	<div class="row">
+						                <div class="col-md-4">
+						                  <div class="form-group">
+						                    <label for="guests">Price from:</label>
+						                    <div class="form-field">
+						                      <i class="icon icon-arrow-down3"></i>
+						                      <select name="people" id="people" class="form-control">
+						                        <option value="#">1</option>
+						                        <option value="#">200</option>
+						                        <option value="#">300</option>
+						                        <option value="#">400</option>
+						                        <option value="#">1000</option>
+						                      </select>
+						                    </div>
+						                  </div>
+						                </div>
+						                <div class="col-md-4">
+						                  <div class="form-group">
+						                    <label for="guests">Price to:</label>
+						                    <div class="form-field">
+						                      <i class="icon icon-arrow-down3"></i>
+						                      <select name="people" id="people" class="form-control">
+						                        <option value="#">2000</option>
+						                        <option value="#">4000</option>
+						                        <option value="#">6000</option>
+						                        <option value="#">8000</option>
+						                        <option value="#">10000</option>
+						                      </select>
+						                    </div>
+						                  </div>
+						                </div>
+						              </div>
+						            </form>
+					            </div>
+								</div>
+							</div>
+							<div class="side animate-box">
+								<div class="row">
+									<div class="col-md-12">
+										<h3 class="sidebar-heading">Review Rating</h3>
+										<form method="post" class="colorlib-form-2">
+										   <div class="form-check">
+												<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												<label class="form-check-label" for="exampleCheck1">
+													<p class="rate"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span></p>
+												</label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+										    	   <p class="rate"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span></p>
+										      </label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+										      	<p class="rate"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span></p>
+										     </label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+										      	<p class="rate"><span><i class="icon-star-full"></i><i class="icon-star-full"></i></span></p>
+										     </label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+										      	<p class="rate"><span><i class="icon-star-full"></i></span></p>
+										     </label>
+										   </div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="side animate-box">
+								<div class="row">
+									<div class="col-md-12">
+										<h3 class="sidebar-heading">Categories</h3>
+										<form method="post" class="colorlib-form-2">
+										   <div class="form-check">
+												<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												<label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Apartment</h4>
+												</label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Hotel</h4>
+												</label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Hostel</h4>
+												</label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Inn</h4>
+												</label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Villa</h4>
+												</label>
+										   </div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="side animate-box">
+								<div class="row">
+									<div class="col-md-12">
+										<h3 class="sidebar-heading">Location</h3>
+										<form method="post" class="colorlib-form-2">
+										   <div class="form-check">
+												<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												<label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Greece</h4>
+												</label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Italy</h4>
+												</label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Spain</h4>
+												</label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Germany</h4>
+												</label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Japan</h4>
+												</label>
+										   </div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="side animate-box">
+								<div class="row">
+									<div class="col-md-12">
+										<h3 class="sidebar-heading">Facilities</h3>
+										<form method="post" class="colorlib-form-2">
+										   <div class="form-check">
+												<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												<label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Airport Transfer</h4>
+												</label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Resto Bar</h4>
+												</label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Restaurant</h4>
+												</label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Swimming Pool</h4>
+												</label>
+										   </div>
+										   <div class="form-check">
+										      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										      <label class="form-check-label" for="exampleCheck1">
+													<h4 class="place">Japan</h4>
+												</label>
+										   </div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
         </div>
-    <%end%>
-</div>
+        <%= render 'home/footer' %>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+	</div>
+
+	</body>
