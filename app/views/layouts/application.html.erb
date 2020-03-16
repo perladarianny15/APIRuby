@@ -50,7 +50,9 @@
 
     <!-- Modernizr JS -->
     <%= javascript_include_tag "respond.min" %>
-	<%= javascript_include_tag "modernizr-2.6.2.min" %>
+    <%= javascript_include_tag "modernizr-2.6.2.min" %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
