@@ -20,96 +20,97 @@
 						<div class="tab-content">
 								<div id="flight" class="tab-pane fade in active">
 									<%= form_with(url: flight_lowfare_path, method: 'get', local: true, class:"colorlib-form") do %>
-
-									<div class="row">
-									<div class="col-md-3">
+										<div class="row">
+										<div class="col-md-3">
+											<div class="form-group">
+											<label for="date">Origin:</label>
+											<div class="form-field">
+											<%= select_tag(:origin, options_for_select(HomeHelper::LowFareOrigin.origins.map { |key, value| [key.humanize, key, value] }), {:class => 'form-control'})  %>
+											</div>
+										</div>
+										</div>
+										<div class="col-md-3">
 										<div class="form-group">
-										<label for="date">Origin:</label>
-										<div class="form-field">
-										<%= select_tag(:origin, options_for_select(HomeHelper::LowFareOrigin.origins.map { |key, value| [key.humanize, key, value] }), {:class => 'form-control'})  %> 
+											<label for="date">Destination:</label>
+											<div class="form-field">
+											<%= select_tag(:destination, options_for_select(HomeHelper::LowFareDestination.destinations.map { |key, value| [key.humanize, key, value] }), {:class => 'form-control'})  %>
+											</div>
 										</div>
-									</div>
-									</div>
-									<div class="col-md-3">
-									<div class="form-group">
-										<label for="date">Destination:</label>
-										<div class="form-field">
-										<%= select_tag(:destination, options_for_select(HomeHelper::LowFareDestination.destinations.map { |key, value| [key.humanize, key, value] }), {:class => 'form-control'})  %> 
 										</div>
-									</div>
-									</div>
-									<div class="col-md-2">
-									<div class="form-group">
-										<label for="date">Check-in:</label>
-										<div class="form-field">
-										<i class="icon icon-calendar2"></i>
-										<%= text_field_tag :departuredate, nil, id:"date", placeholder: 'Departure Date', class: 'form-control date' %>
+										<div class="col-md-2">
+										<div class="form-group">
+											<label for="date">Check-in:</label>
+											<div class="form-field">
+											<i class="icon icon-calendar2"></i>
+											<%= text_field_tag :departuredate, nil, id:"date", placeholder: 'Departure Date', class: 'form-control date' %>
+											</div>
 										</div>
-									</div>
-									</div>
-									<div class="col-md-2">
-									<div class="form-group">
-										<label for="date">Check-out:</label>
-										<div class="form-field">
-										<i class="icon icon-calendar2"></i>
-										<%= text_field_tag :arrivaldate, nil, id:"date", placeholder: 'Return Date', class: 'form-control date' %>
 										</div>
-									</div>
-									</div>
-									<div class="col-md-2">
-										<%= button_tag 'Find Flights', class: 'btn btn-primary btn-block', id:"submit" %>
-									</div>
-								</div>
-							</div>
-						 <%end%>
-				         <div id="hotel" class="tab-pane fade">
-						      <form method="post" class="colorlib-form">
-				              	<div class="row">
-				              	 <div class="col-md-2">
-				              	 	<div class="booknow">
-				              	 		<h2>Book Now</h2>
-					              	 	<span>Best Price Online</span>
-				              	 	</div>
-				              	 </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="date">Check-in:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="date">Check-out:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-2">
-				                  <div class="form-group">
-				                    <label for="guests">Guest</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-arrow-down3"></i>
-				                      <select name="people" id="people" class="form-control">
-				                        <option value="#">1</option>
-				                        <option value="#">2</option>
-				                        <option value="#">3</option>
-				                        <option value="#">4</option>
-				                        <option value="#">5+</option>
-				                      </select>
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-2">
-				                  <input type="submit" name="submit" id="submit" value="Find Hotel" class="btn btn-primary btn-block">
-				                </div>
-				              </div>
-				            </form>
-						   </div>
+										<div class="col-md-2">
+										<div class="form-group">
+											<label for="date">Check-out:</label>
+											<div class="form-field">
+											<i class="icon icon-calendar2"></i>
+											<%= text_field_tag :arrivaldate, nil, id:"date", placeholder: 'Return Date', class: 'form-control date' %>
+											</div>
+										</div>
+										</div>
+										<div class="col-md-2">
+											<%= button_tag 'Find Flights', class: 'btn btn-primary btn-block', id:"submit" %>
+										</div>
+										</div>
+										</div>
+									<%end%>
+				         			<div id="hotel" class="tab-pane fade">
+						 				<%= form_with(url: searchhotel_path, method: 'get', local: true, class:"colorlib-form") do %>
+				              				<div class="row">
+												<div class="col-md-2">
+													<div class="booknow">
+														<h2>Book Now</h2>
+														<span>Best Price Online</span>
+													</div>
+												</div>
+												<div class="col-md-2">
+												  <div class="form-group">
+													   <label for="date">City:</label>
+												   	 <div class="form-field">
+												   		<%= select_tag(:citycode, options_for_select(HotelHelper::City.cities.map { |key, value| [key.humanize, key, value] }), {:class => 'form-control'})  %>
+													 </div>
+											 	 </div>
+											 	</div>
+												<div class="col-md-2">
+													<div class="form-group">
+														<label for="date">Check-in:</label>
+															<div class="form-field">
+															<i class="icon icon-calendar2"></i>
+															<%= text_field_tag :checkInDate, nil, id:"date", placeholder: 'Checkin Date', class: 'form-control date' %>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<div class="form-group">
+														<label for="date">Check-out:</label>
+														<div class="form-field">
+														<i class="icon icon-calendar2"></i>
+														<%= text_field_tag :checkOutDate, nil, id:"date", placeholder: 'Checkout Date', class: 'form-control date' %>
+													</div>
+												</div>
+												</div>
+												<div class="col-md-2">
+													<div class="form-group">
+															<label for="guests">Guest:</label>
+															<div class="form-field">
+																<i class="icon icon-arrow-down3"></i>
+																<%= select_tag(:adults, options_for_select(HotelHelper::Guest.guests.map { |key, value| [key.humanize, key, value] }), {:class => 'form-control'})  %>
+															</div>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<%= button_tag 'Find Hotels', class: 'btn btn-primary btn-block', id:"submit" %>
+												</div>
+				          				</div>
+				        		<%end%>
+						   	</div>
 						   <div id="car" class="tab-pane fade">
 						   	<form method="post" class="colorlib-form">
 				              	<div class="row">
@@ -493,7 +494,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2 animate-box">						
+					<div class="col-md-8 col-md-offset-2 animate-box">
 						<div class="owl-carousel2">
 							<div class="item">
 								<div class="testimony text-center">
@@ -527,7 +528,7 @@
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
 		</div>
 
@@ -707,7 +708,7 @@
 			</div>
 		</div>
 
-	
+
 		<div id="colorlib-subscribe" style="background-image: url(/assets/blog-1.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
@@ -735,4 +736,3 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
-	

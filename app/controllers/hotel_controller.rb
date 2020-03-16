@@ -4,7 +4,7 @@ class HotelController < ApplicationController
   def index
   end
   def searchhotel
-    hotel = find_hotel_offers(params[:citycode])
+    hotel = find_hotel_offers(params[:citycode], params[:checkInDate], params[:checkOutDate], params[:adults])
   
     unless hotel
       flash[:alert] = 'Could not get Hotel Info'
@@ -13,9 +13,9 @@ class HotelController < ApplicationController
     @hotelList = hotel
   end
 
-  def find_hotel_offers(citycode)
+  def find_hotel_offers(citycode, checkInDate, checkOutDate, adults)
     amadeus = hotel_conexion()
-
+    puts citycode
     response = amadeus.shopping.hotel_offers.get(cityCode: (URI.encode(citycode)))
     response.data
   end
